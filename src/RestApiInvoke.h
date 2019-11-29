@@ -48,7 +48,7 @@ namespace Huobi {
                     throw HuobiApiException(
                             HuobiApiException::RUNTIME_ERROR, "[Invoking] Status cannot be found in response.");
                 }
-            } catch (std::exception e) {
+            } catch (std::exception &e) {
                 std::string msg;
                 msg = "[Invoking] Unexpected error: ";
                 throw HuobiApiException(

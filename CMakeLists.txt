@@ -58,7 +58,13 @@ set(CURRENT_VERSION 1.0.2)
 configure_file("${PROJECT_SOURCE_DIR}/config.h.in"
         "${PROJECT_BINARY_DIR}/config.h")
 
-include_directories("${PROJECT_BINARY_DIR}")
+include_directories("${PROJECT_BINARY_DIR}"
+  "/home/golang/gopath/src/github.com/gpmn/cryptorobots/huobiSpotHft/artifacts/include"
+  "/home/golang/gopath/src/github.com/gpmn/cryptorobots/huobiSpotHft/artifacts/include"
+  "/home/golang/gopath/src/github.com/gpmn/cryptorobots/huobiSpotHft/artifacts/include/libwebsockets"
+  "/home/golang/gopath/src/github.com/gpmn/cryptorobots/huobiSpotHft/artifacts/include/decnumber")
+
+link_directories("/home/golang/gopath/src/github.com/gpmn/cryptorobots/huobiSpotHft/artifacts/lib")
 
 if (LINUX)
     execute_process(COMMAND sh ../getOpensslVersion.sh
@@ -93,6 +99,7 @@ FIND_PATH(
         decNumber.h
         /usr/include/decnumber/
         /usr/local/include/decnumber/
+        /home/golang/gopath/src/github.com/gpmn/cryptorobots/huobiSpotHft/artifacts/include/decnumber/
 )
 
 include_directories(./include)

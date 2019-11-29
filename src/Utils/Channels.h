@@ -9,8 +9,8 @@ namespace Huobi {
 
     class Channels {
     public:
-        static char* OP_SUB;
-        static char* OP_REQ;
+         static char* OP_SUB;
+         static char* OP_REQ;
 
         static std::string klineChannel(
                 const std::string& symbol, const CandlestickInterval& interval) {
@@ -174,8 +174,8 @@ namespace Huobi {
         }
           
     };
-    char* Channels::OP_SUB = "sub";
-    char* Channels::OP_REQ = "req";
+     char* Channels::OP_SUB = "sub";
+     char* Channels::OP_REQ = "req";
 }
 #endif /* CHANNELS_H */
 

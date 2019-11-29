@@ -122,7 +122,7 @@ namespace Huobi {
             JsonWrapper asks = tick.getJsonObjectOrArray("asks");
             PriceDepth depth;
             std::vector<DepthEntry>bidsves;
-            for (int i = 0; i < bids.size(); i++) {
+            for (int i = 0; i < int(bids.size()); i++) {
                 DepthEntry de;
                 JsonWrapper item = bids.getArrayAt(i);
                 de.price = item.getDecimalAt(0);
@@ -130,7 +130,7 @@ namespace Huobi {
                 bidsves.push_back(de);
             }
             std::vector<DepthEntry>asksves;
-            for (int i = 0; i < asks.size(); i++) {
+            for (int i = 0; i < int(asks.size()); i++) {
                 DepthEntry de;
                 JsonWrapper item = asks.getArrayAt(i);
                 de.price = item.getDecimalAt(0);
@@ -250,7 +250,7 @@ namespace Huobi {
             accountEvent.changeType = AccountChangeType::lookup(data.getString("event"));
             accountEvent.timestamp = json.getLong("ts");
             JsonWrapper listArray = data.getJsonObjectOrArray("list");
-            for (int i = 0; i < listArray.size(); i++) {
+            for (int i = 0; i < int(listArray.size()); i++) {
                 JsonWrapper itemInList = listArray.getJsonObjectAt(i);
                 AccountChange change;
                 change.accountType = AccountsInfoMap::getAccount(this->accessKey, itemInList.getLong("account-id")).type;
@@ -368,12 +368,12 @@ namespace Huobi {
             marketDepthMBPEvent.prevSeqNum = tick.getLong("prevSeqNum");
             JsonWrapper bids = tick.getJsonObjectOrArray("bids");
             JsonWrapper asks = tick.getJsonObjectOrArray("asks");
-            for (int i = 0; i < bids.size(); i++) {
+            for (int i = 0; i < int(bids.size()); i++) {
                 JsonWrapper item = bids.getArrayAt(i);
                 Decimal price = item.getDecimalAt(0);
                 marketDepthMBPEvent.bids[price] = item.getDecimalAt(1);
             }
-            for (int i = 0; i < asks.size(); i++) {
+            for (int i = 0; i < int(asks.size()); i++) {
                 JsonWrapper item = asks.getArrayAt(i);
                 Decimal price = item.getDecimalAt(0);
                 marketDepthMBPEvent.asks[price] = item.getDecimalAt(1);
@@ -411,7 +411,7 @@ namespace Huobi {
         req->JsonParser = [interval](const JsonWrapper & json) {
             std::vector<CandlestickEvent> cans;
             JsonWrapper data = json.getJsonObjectOrArray("data");
-            for (int i = 0; i < data.size(); i++) {
+            for (int i = 0; i < int(data.size()); i++) {
                 JsonWrapper item = data.getJsonObjectAt(i);
                 CandlestickEvent candlestickEvent;
                 ChannelParser parser = ChannelParser(json.getString("rep"));
@@ -463,7 +463,7 @@ namespace Huobi {
             JsonWrapper bids = data.getJsonObjectOrArray("bids");
             JsonWrapper asks = data.getJsonObjectOrArray("asks");
             std::vector<DepthEntry>bidsves;
-            for (int i = 0; i < bids.size(); i++) {
+            for (int i = 0; i < int(bids.size()); i++) {
                 DepthEntry de;
                 JsonWrapper item = bids.getArrayAt(i);
                 de.price = item.getDecimalAt(0);
@@ -471,7 +471,7 @@ namespace Huobi {
                 bidsves.push_back(de);
             }
             std::vector<DepthEntry>asksves;
-            for (int i = 0; i < asks.size(); i++) {
+            for (int i = 0; i < int(asks.size()); i++) {
                 DepthEntry de;
                 JsonWrapper item = asks.getArrayAt(i);
                 de.price = item.getDecimalAt(0);
@@ -513,7 +513,7 @@ namespace Huobi {
             TradeEvent event;
             std::vector<Trade> tradeVec;
             JsonWrapper dataArray = json.getJsonObjectOrArray("data");
-            for (int i = 0; i < dataArray.size(); i++) {
+            for (int i = 0; i < int(dataArray.size()); i++) {
                 JsonWrapper item = dataArray.getJsonObjectAt(i);
                 Trade trade;
                 trade.amount = item.getDecimal("amount");
@@ -597,14 +597,14 @@ namespace Huobi {
             JsonWrapper data = json.getJsonObjectOrArray("data");
             long ts = json.getLong("ts");
             event.timestamp = ts;
-            for (int i = 0; i < data.size(); i++) {
+            for (int i = 0; i < int(data.size()); i++) {
                 JsonWrapper item = data.getJsonObjectAt(i);
                 Account account;
                 account.id = item.getLong("id");
                 account.type = AccountType::lookup(item.getString("type"));
                 account.state = AccountState::lookup(item.getString("state"));
                 JsonWrapper list = item.getJsonObjectOrArray("list");
-                for (int i = 0; i < list.size(); i++) {
+                for (int i = 0; i < int(list.size()); i++) {
                     JsonWrapper json = list.getJsonObjectAt(i);
                     Balance balance;
                     balance.balance = json.getDecimal("balance");
@@ -652,7 +652,7 @@ namespace Huobi {
             JsonWrapper data = json.getJsonObjectOrArray("data");
             long ts = json.getLong("ts");
             event.timestamp = ts;
-            for (int i = 0; i < data.size(); i++) {
+            for (int i = 0; i < int(data.size()); i++) {
                 JsonWrapper item = data.getJsonObjectAt(i);
                 Order order;
                 order.orderId = item.getLong("id");
@@ -750,12 +750,12 @@ namespace Huobi {
             marketDepthMBPEvent.prevSeqNum = data.getLong("prevSeqNum");
             JsonWrapper bids = data.getJsonObjectOrArray("bids");
             JsonWrapper asks = data.getJsonObjectOrArray("asks");
-            for (int i = 0; i < bids.size(); i++) {
+            for (int i = 0; i < int(bids.size()); i++) {
                 JsonWrapper item = bids.getArrayAt(i);
                 Decimal price = item.getDecimalAt(0);
                 marketDepthMBPEvent.bids[price] = item.getDecimalAt(1);
             }
-            for (int i = 0; i < asks.size(); i++) {
+            for (int i = 0; i < int(asks.size()); i++) {
                 JsonWrapper item = asks.getArrayAt(i);
                 Decimal price = item.getDecimalAt(0);
                 marketDepthMBPEvent.asks[price] = item.getDecimalAt(1);
