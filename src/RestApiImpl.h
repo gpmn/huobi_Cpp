@@ -132,7 +132,7 @@ namespace Huobi {
         template <typename T>
         RestApi<T>* createRequestByGet(const char* adress, UrlParamsBuilder&builder);
 
-        RestApi<long>* getExchangeTimestamp();
+        RestApi<long>* getExchangeHeartbeat();
 
         RestApi<std::vector<Candlestick>>*getCandlestick(
                 const std::string& symbol,

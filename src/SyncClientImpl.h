@@ -20,7 +20,7 @@ namespace Huobi {
         SyncClientImpl(const char* accesssKey, const char* secretKey, RequestOptions& op);
         SyncClientImpl();
         SyncClientImpl(RequestOptions& op);
-        long getExchangeTimestamp();
+         long getExchangeHeartbeat();
         std::vector<Candlestick> getCandlestick(const CandlestickRequest& request);
         std::vector<Candlestick> getLatestCandlestick(const char* symbol, CandlestickInterval interval);
         Trade getLastTrade(const char* symbol);

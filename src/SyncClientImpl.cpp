@@ -31,8 +31,8 @@ namespace Huobi {
         impl = new RestApiImpl(op);
     }
 
-    long SyncClientImpl::getExchangeTimestamp() {
-        return RestApiInvoke::callSync(impl->getExchangeTimestamp());
+    long SyncClientImpl::getExchangeHeartbeat() {
+        return RestApiInvoke::callSync(impl->getExchangeHeartbeat());
     }
 
     std::vector<Candlestick> SyncClientImpl::getCandlestick(

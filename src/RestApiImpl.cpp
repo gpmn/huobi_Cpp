@@ -12,8 +12,8 @@
 
 namespace Huobi {
 
-    RestApi<long>* RestApiImpl::getExchangeTimestamp() {
-        Logger::WriteLog("get time stamp");
+    RestApi<long>* RestApiImpl::getExchangeHeartbeat() {
+        Logger::WriteLog("get heartbeat");
         RestApi<long>* res;
         UrlParamsBuilder builder;
         res = createRequestByGet<long>("/v1/common/timestamp", builder);

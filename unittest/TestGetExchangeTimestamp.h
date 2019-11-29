@@ -31,7 +31,7 @@ TEST(TestGetExchangeTimestamp, test) {
             "}";
 
     RestApiImpl* impl = new RestApiImpl();
-    auto request = impl->getExchangeTimestamp();
+    auto request = impl->getExchangeHeartbeat();
     ASSERT_EQ("GET", request->method);
     ASSERT_TRUE(request->getUrl().find("/v1/common/timestamp"));
     JsonWrapper json = JsonDocument().parseFromString(data);

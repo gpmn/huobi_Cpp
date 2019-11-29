@@ -71,7 +71,7 @@ namespace Huobi {
          *
          * \return The Unix timestamp at UTC in millisecond.
          */
-        virtual long getExchangeTimestamp() = 0;
+        virtual long getExchangeHeartbeat() = 0;
 
         /**
          * Get the candlestick/kline for the specified symbol. The data number is 150 as default.
